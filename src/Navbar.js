@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "./images/logo.svg";
 import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "./context";
 
 const Navbar = () => {
-  const { openSidebar } = useGlobalContext();
+  const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
+
+  const displaySubmenu = (e) => {
+    console.log("hello world!");
+    openSubmenu();
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      closeSubmenu();
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [openSidebar]);
 
   return (
     <nav className="nav">
@@ -17,13 +29,19 @@ const Navbar = () => {
         </div>
         <ul className="nav-links">
           <li>
-            <button className="link-btn">products</button>
+            <button className="link-btn" onMouseOver={displaySubmenu}>
+              products
+            </button>
           </li>
           <li>
-            <button className="link-btn">developers</button>
+            <button className="link-btn" onMouseOver={displaySubmenu}>
+              developers
+            </button>
           </li>
           <li>
-            <button className="link-btn">company</button>
+            <button className="link-btn" onMouseOver={displaySubmenu}>
+              company
+            </button>
           </li>
         </ul>
         <button className="btn signin-btn">sign in</button>

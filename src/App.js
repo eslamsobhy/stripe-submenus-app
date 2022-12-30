@@ -8,6 +8,7 @@ function App() {
     <>
       <Sidebar />
       <Navbar />
+      <Submenu />
       <Hero />
     </>
   );
