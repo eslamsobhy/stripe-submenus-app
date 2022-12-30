@@ -6,6 +6,7 @@ import Submenu from "./Submenu";
 function App() {
   return (
     <>
+      <Sidebar />
       <Navbar />
       <Hero />
     </>
