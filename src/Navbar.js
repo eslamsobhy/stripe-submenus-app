@@ -17,17 +17,14 @@ const Navbar = () => {
     openSubmenu(page, { center, bottom });
   };
 
-  /*
-  useEffect(() => {
-    const timer = setTimeout(() => {
+  const handleSubmenu = (e) => {
+    if (!e.target.classList.contains("link-btn")) {
       closeSubmenu();
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [openSidebar]);
-  */
+    }
+  };
 
   return (
-    <nav className="nav">
+    <nav className="nav" onMouseOver={handleSubmenu}>
       <div className="nav-center">
         <div className="nav-header">
           <img src={logo} className="nav-logo" alt="stripe" />
