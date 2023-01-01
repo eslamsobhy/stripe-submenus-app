@@ -7,16 +7,24 @@ const Navbar = () => {
   const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
 
   const displaySubmenu = (e) => {
-    console.log("hello world!");
-    openSubmenu();
+    // getting the button name
+    const page = e.target.textContent;
+
+    // getting coordinates of the button hovered
+    const tempBtn = e.target.getBoundingClientRect();
+    const center = (tempBtn.right + tempBtn.left) / 2;
+    const bottom = tempBtn.bottom;
+    openSubmenu(page, { center, bottom });
   };
 
+  /*
   useEffect(() => {
     const timer = setTimeout(() => {
       closeSubmenu();
     }, 3000);
     return () => clearTimeout(timer);
   }, [openSidebar]);
+  */
 
   return (
     <nav className="nav">
